@@ -2,12 +2,21 @@
 	require_once(ROOT.'/models/includes/Autoloader.php');
 	Autoloader::register();
 	$form = new Form ($_POST);
+
+	$donnees = NULL;
+	if (isset($_SESSION['id'])) {
+		$donnees = $_SESSION['id'];
+	}
+
+	if($donnees == "0"){
+		header("Location : ../backoffice/");
+	}
 ?>
 		<header>
 		<nav>
 			<a href="management"><img src="../images/logo.png"/></a>
 			<h1>Gestion des catégories et démarches</h1>
-			<a class="disconnect" href="../">Déconnexion</a>
+			<a class="disconnect" href="../backoffice/">Déconnexion</a>
 		</nav>
 		<article>
 			<?php

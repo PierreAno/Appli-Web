@@ -3,15 +3,15 @@
 	require_once(ROOT.'/models/includes/Autoloader.php');
 	Autoloader::register();
 
-$conn = new PDO('mysql:dbname=projetstage;host=localhost', 'root', '');
-$pdoquery = $conn->prepare('SELECT * FROM tblavis');
-$pdoquery->execute();
-$nb_row = $pdoquery->rowCount();
+	$conn = new PDO('mysql:dbname=projetstage;host=localhost', 'root', '');
+	$pdoquery = $conn->prepare('SELECT * FROM tblavis');
+	$pdoquery->execute();
+	$nb_row = $pdoquery->rowCount();
 ?>
 		<section>
 			<nav>
 				<a href="./management"><img src="../images/logo.png"/></a>
-				<a href="index">Déconnexion</a>
+				<a href="../backoffice/">Déconnexion</a>
 			</nav>
 			<div class="review">
 	<?php

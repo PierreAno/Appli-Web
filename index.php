@@ -1,51 +1,51 @@
 <?php
-// On génère une constante contenant le chemin vers la racine publique du projet
+// A constant is generated containing the path to the public root of the project
 define('ROOT', str_replace('index.php','',$_SERVER['SCRIPT_FILENAME']));
 
-// On appelle le modèle et le contrôleur principaux
+// The master model and controller is called
 require_once(ROOT.'app/Controller.php');
 require_once(ROOT.'app/Model.php');
 
-// On sépare les paramètres et on les met dans le tableau $params
+// Separate the parameters and put them in the $params array
 $params = explode('/', $_GET['p']);
 
-// Si au moins 1 paramètre existe
+// If at least 1 parameter exists
 if($params[0] != ""){
-    // On sauvegarde le 1er paramètre dans $controller en mettant sa 1ère lettre en majuscule
+    // Save the 1st parameter in $controller by capitalizing its 1st letter
     $controller = ucfirst($params[0]);
 
-if($params[1] != ""){
-    $action = strtolower($params[1]);
-}else{
-     $action = $params[1]='index';
-}
+    if($params[1] != ""){
+        $action = strtolower($params[1]);
+    }else{
+         $action = $params[1]='index';
+    }
 
-    // On appelle le contrôleur
-    require_once(ROOT.'controllers/'.$controller.'.php');
+    // The controller is called
+    require_once(ROOT. 'controllers/'.$controller. '.php');
 
-    // On instancie le contrôleur
+    // The controller is instantiated
     $controller = new $controller();
 
     if(method_exists($controller, $action)){
         unset($params[0]);
         unset($params[1]);
         call_user_func([$controller, $action]);
-        // On appelle la méthode
-         $controller->$action();
+        // The method is called         
+        $controller->$action();
          
     }else{
-        // On envoie le code réponse 404
+        // Reply code 404 is sent
         http_response_code(404);
         echo "Not found";
     }
 }else{
-    // Ici aucun paramètre n'est défini
-    // On appelle le contrôleur par défaut
-    require_once(ROOT.'controllers/BackOffice.php');
+    // Here no parameter is defined
+    // The default controller is called
+    require_once(ROOT. 'controllers/Frontoffice.php ');
+    
+    // The controller is instantiated
+    $controller = new Frontoffice();
 
-    // On instancie le contrôleur
-    $controller = new BackOffice();
-
-    // On appelle la méthode index
+    // The index method is called
     $controller->index();
 }

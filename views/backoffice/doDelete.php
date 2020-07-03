@@ -33,11 +33,11 @@
 				 $Deletecategory =	new Category;
 				 $Deletecategory->deleteCategory($idcat, $category);
 				 // Redirection
-				 header("Location: management.php");
+				 header("Location: ../backoffice/management");
 			 }else{
 				 echo "Cette catégorie n'existe pas !";
 				 // Redirection
-				 header("Location: management.php");
+				 header("Location: ../backoffice/management");
 			 }
 		 }
 		}else{
@@ -51,11 +51,11 @@
 				 $deleteStep =	new Step;
 				 $deleteStep->deleteStep($idstep, $step);
 				 // Redirection
-				 header("Location: management.php");
+				 header("Location: ../backoffice/management");
 			 }else{
 				 echo "Cette démarche n'existe pas !";
 				 // Redirection
-				 header("Location: management.php");
+				 header("Location: ../backoffice/management");
 			}
 		}
 	}

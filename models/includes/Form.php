@@ -30,7 +30,7 @@
     }
 
     public function img1($name, $id, $img, $alt){
-      return $this->surround('<input class="'.$name.'" type="image" name="'.$name.'" src="../medias/'. $img .'" alt="'.$alt.'" value="'.$id.'">');
+      return $this->surround('<input class="'.$name.'" type="image" name="'.$name.'" src="./medias/'. $img .'" alt="'.$alt.'" value="'.$id.'">');
     }
 
     public function submit($name){

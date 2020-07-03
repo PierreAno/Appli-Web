@@ -19,10 +19,10 @@
 		<meta charset='UTF-8'>
 
 		<!-- Icône de l'onglet -->
-		<link rel='icon' type='image/png' href='../images/favicon.png' />
+		<link rel='icon' type='image/png' href='../images/favicon1.png' />
 
 		<!-- Titre de l'onglet -->
-		<title></title>
+		<title>BackOffice</title>
 	</head>
 
 	<!-- Corps du document -->

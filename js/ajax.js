@@ -15,42 +15,42 @@ $(document).ready(function(){
 jQuery("body").on("click", ".doLog", function() {
 	var lastName = jQuery("input[name='lastName']").val();
 	var firstName = jQuery("input[name='firstName']").val();
-	sendAjax("./doLogin", {lastName: lastName, firstName: firstName});
+	sendAjax("./frontoffice/doLogin", {lastName: lastName, firstName: firstName});
 });
 
 jQuery("body").on("click", ".smiley5", function() {
 	var list1 = jQuery('.list1').val();
 	var list2 = jQuery('.list2').val();
 	var review5 = jQuery("input[name='smiley5']").val();
-	sendAjax("./doInsert", {list1: list1, list2: list2, review5: review5});
+	sendAjax("./frontoffice/doInsert", {list1: list1, list2: list2, review5: review5});
 });
 
 jQuery("body").on("click", ".smiley4", function() {
 	var list1 = jQuery('.list1').val();
 	var list2 = jQuery('.list2').val();
 	var review4 = jQuery("input[name='smiley4']").val();
-	sendAjax("./doInsert", {list1: list1, list2: list2, review4: review4});
+	sendAjax("./frontoffice/doInsert", {list1: list1, list2: list2, review4: review4});
 });
 
 jQuery("body").on("click", ".smiley3", function() {
 	var list1 = jQuery('.list1').val();
 	var list2 = jQuery('.list2').val();
 	var review3 = jQuery("input[name='smiley3']").val();
-	sendAjax("./doInsert", {list1: list1, list2: list2, review3: review3});
+	sendAjax("./frontoffice/doInsert", {list1: list1, list2: list2, review3: review3});
 });
 
 jQuery("body").on("click", ".smiley2", function() {
 	var list1 = jQuery('.list1').val();
 	var list2 = jQuery('.list2').val();
 	var review2 = jQuery("input[name='smiley2']").val();
-	sendAjax("./doInsert", {list1: list1, list2: list2, review2: review2});
+	sendAjax("./frontoffice/doInsert", {list1: list1, list2: list2, review2: review2});
 });
 
 jQuery("body").on("click", ".smiley1", function() {
 	var list1 = jQuery('.list1').val();
 	var list2 = jQuery('.list2').val();
 	var review1 = jQuery("input[name='smiley1']").val();
-	sendAjax("./doInsert", {list1: list1, list2: list2, review1: review1});
+	sendAjax("./frontoffice/doInsert", {list1: list1, list2: list2, review1: review1});
 });
 //====================================================================================================================================================================
 

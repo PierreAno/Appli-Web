@@ -32,51 +32,52 @@ catch(PDOException $e){
 <?php
 session_start();
 
-//Connexion à mySQL en testant la présence d'erreur
+//Connect to mySQL by testing for error
 try {
-    $cnx = new PDO('mysql:host=localhost;dbname=projetstage', 'root', '');
     if(!empty($_POST)){
         
         $pwd = $_POST['pwd'];
-        $nom = addcslashes($_POST['login'], '%_');
+        $nom = $_POST['login'];
+        $conn = new PDO('mysql:dbname=projetstage;host=localhost', 'root', '');
 
-        //Verifier si le mot de passe correspond bien au nom
-
-        $sql = 'SELECT id FROM tblusers WHERE nom ='.$nom.' AND password = '.$pwd;
-        $req = $cnx->prepare($sql);
-        $req->execute();
+        //Check if the password matches the name
+        $q = array('nom'=>$nom, 'password'=>$pwd);
+        $sql = 'SELECT id FROM tblusers WHERE nom = :nom AND password = :password';
+        $req = $conn->prepare($sql);
+        $req->execute($q);
         $count = $req->rowCount($sql);
-        /*PDOStatement::rowCount() retourne le nombre de lignes affectées par la dernière requête
-          DELETE, INSERT ou UPDATE exécutée par l'objet PDOStatement correspondant. S'il y a plus
-          d'une ligne alors les données des champs utilisés lors de la requête ne sont pas sur la
-          même ligne et s'il y a 0 ligne cela signifie qu'aucune donnée est située dans la table.*/
+
+        /*PDOstatement::rowCount() returns the number of rows affected by the last query
+        DELETE, INSERT or UPDATE executed by the corresponding PDOstatement object. If there is more
+        a row then the data of the fields used during the query are not on the
+        same row and if there is 0 row it means that no data is located in the table. */
         if($count == 1){
-            //Verifier si l'utilisateur est actif
+            $cnx = new PDO('mysql:dbname=projetstage;host=localhost', 'root', '');
+            //Check if the user is active
             $sql = 'SELECT id FROM tblusers WHERE nom = :nom AND password = :password';
             $req = $cnx->prepare($sql);
             $req->execute($q);
             $actif = $req->rowCount($sql);
 
             $donnees = $req->fetch();
-            $req->closeCursor(); // Termine le traitement de la requête
-
+            $req->closeCursor(); // Complete the processing of the request
 
             if($actif == 1){
-                $_SESSION['id'] = $donnees;
-                /*Si le nom et le mot de passe sont bons on créé la variable superglobale session 'id'
-                qui correspond à un tableau contenant l'nom de l'utilisateur et le mot de passe et on effectue
-                une redirection vers la page private.php qui n'est accessible que pour les utilisateurs inscrits
+                $_SESSION['id'] = $donnees['id'];
+                /* If the name and password are good, we create the superglobal variable session 'id'
+                which corresponds to an array containing the user name and password and is performed
+                a redirect to the private.php page which is only accessible to registered users
                 */
-                header('Location:.backoffice/management');
+                header('Location: ./management');
                 exit();
             }
-            //Si activer n'est pas égal à 1 alors actif sera égale à 0 car il y aura 0 lignes qui contient les valeurs demandées dans la requète
+            //If enable is not equal to 1 then active will be equal to 0 because there will be 0 rows that contain the requested values in the query
             else{
-                $error_actif = 'Votre compte n\'est pas actif ! Verifier vos mails pour activer votre compte !';
+                $error_actif = 'Votre compte est inexistant !';
             }
         }
         else{
-            //Si utilisateur inconnu
+            //If unknown user
             $error_unknown = 'Utilisateur inexistant !';
         }
     }

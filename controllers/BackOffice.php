@@ -3,17 +3,23 @@
 class BackOffice extends Controller{
 
 	public function index(){
-        $this->render('index');     
+		// Instantiate the "Auth" model
+        $this->loadModel('Auth');
+
+        // Data is stored in $auth
+        $auth = $this->Auth->isloged();
+
+        $this->render('index', compact('auth'));     
 	}
 
 	public function management(){
-		// On instancie le modèle "Auth"
+		// Instantiate the "Auth" model
         $this->loadModel('Auth');
 
-        // On stocke la liste des articles dans $auth
+        // Data is stored in $auth
         $auth = $this->Auth->isloged();
 
-        // On envoie les données à la vue management
+        // Data is sent to the management view
         $this->render('management', compact('auth'));
 	}
 

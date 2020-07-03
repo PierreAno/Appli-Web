@@ -19,7 +19,7 @@
 $html .= "
 	<body>
 	  <aside class='menu'>
-	    <img src='../medias/logoCACL.png'/>
+	    <img src='./medias/logoCACL.png'/>
 	    <div>
 	      <h4>Liste des catégories</h4>
 	      <select size='1' class='list1' name='list1'>

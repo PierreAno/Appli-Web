@@ -5,38 +5,38 @@ abstract class Controller{
         extract($data);
 
         if (strtolower(get_class($this)) == "frontoffice"){
-            // On démarre le buffer de sortie
+            // Start the output buffer
             ob_start();
 
-            // On génère la vue
+            // We generate the view
             require_once(ROOT.'views/'.strtolower(get_class($this)).'/'.$fichier.'.php');
 
-            // On stocke le contenu dans $content
+            // Content is stored in $content
             $content = ob_get_clean();
 
-            // On fabrique le "template"
+            // We manufacture the "template"
             require_once(ROOT.'views/layout/default1.php');
 
         }else{
-            // On démarre le buffer de sortie
+            // Start the output buffer
             ob_start();
 
-            // On génère la vue
+            // We generate the view
             require_once(ROOT.'views/'.strtolower(get_class($this)).'/'.$fichier.'.php');
 
-            // On stocke le contenu dans $content
+            // Content is stored in $content
             $content = ob_get_clean();
 
-            // On fabrique le "template"
+            // We manufacture the "template"
             require_once(ROOT.'views/layout/default.php');
         }
     }
 
     public function loadModel(string $model){
-        // On va chercher le fichier correspondant au modèle souhaité
+        // We will look for the file corresponding to the desired model
         require_once(ROOT.'models/'.$model.'.php');
         
-        // On crée une instance de ce modèle. Ainsi "Article" sera accessible par $this->Article
+       // An instance of this template is created. Thus "Model" will be accessible by $this->Model
         $this->$model = new $model();
     }
 }
