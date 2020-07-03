@@ -1,0 +1,60 @@
+/*------------------------------------------------------------------------------
+	FONTS : include fonts
+------------------------------------------------------------------------------*/
+
+
+
+/* Fonts */
+@font-face {
+font-family: 'Ubuntu Regular';
+font-weight: normal;
+src:
+    local('Ubuntu Regular'),
+    local('Ubuntu-Regular'),
+    url('../fonts/Ubuntu-Regular.ttf') format('truetype');
+}
+
+@font-face {
+font-family: 'BalooPaaji Regular';
+font-weight: normal;
+src:
+    local('BalooPaaji Regular'),
+    local('BalooPaaji-Regular'),
+    url('../fonts/BalooPaaji-Regular.ttf') format('truetype');
+}
+
+@font-face {
+font-family: 'Dekko Regular';
+font-weight: normal;
+src:
+    local('Dekko Regular'),
+    local('Dekko-Regular'),
+    url('../fonts/Dekko-Regular.ttf') format('truetype');
+}
+
+@font-face {
+font-family: 'Handlee Regular';
+font-weight: normal;
+src:
+    local('Handlee Regular'),
+    local('Handlee-Regular'),
+    url('../fonts/Handlee-Regular.ttf') format('truetype');
+}
+
+@font-face {
+font-family: 'Indie Flower Regular';
+font-weight: normal;
+src:
+    local('Indie Flower Regular'),
+    local('IndieFlower'),
+    url('../fonts/IndieFlower.ttf') format('truetype');
+}
+
+@font-face {
+font-family: 'Overlock Regular';
+font-weight: normal;
+src:
+    local('Overlock Regular'),
+    local('Overlock-Regular'),
+    url('../fonts/Overlock-Regular.ttf') format('truetype');
+}
